@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<grammar xml:lang="de-DE" root="Main"
+tag-format="semantics-ms/1.0" version="1.0"
+xmlns="http://www.w3.org/2001/06/grammar">
+
+  <rule id="Main" scope="public">
+    <one-of>
+
+      <!-- Ein-Wort-Kommandos -->
+      <!-- Bsp: 'Beenden' -->
+      <item>
+        <!-- Aktivierungs-Wort -->
+        Eckard
+        <tag> $.Object="ACTIVATE"; </tag>
+      </item>
+
+      <item>
+        Beenden
+        <tag> $.Object="EXIT"; </tag>
+      </item>
+      
+      <!-- Zwei-Wort-Kommandos -->
+      <!-- Bsp: 'Fernseher einschalten' -->
+      <item>
+        <ruleref uri="#Object" />
+        <tag> $.Object=$$; </tag>
+        <ruleref uri="#Command" />
+        <tag> $.Command=$$; </tag>
+      </item>
+      
+      <!-- Drei-Wort-Kommandos -->
+      <!-- Bsp: 'Lampe [im] Flur anmachen' -->
+      <item>
+        <ruleref uri="#Object" />
+        <tag> $.Object=$$; </tag>
+        <ruleref uri="#Location" />
+        <tag> $.Location=$$; </tag>
+        <ruleref uri="#Command" />
+        <tag> $.Command=$$; </tag>
+      </item>
+      
+    </one-of>
+  </rule>
+
+  <!-- Objects -->
+  <rule id="Object" scope="private">
+    <one-of>
+      
+      <item>
+        <tag> $="LICHT"; </tag>
+        <one-of>
+          <item> Licht </item>
+          <item> Lampe </item>
+        </one-of>
+      </item>
+      
+      <item>
+        <tag> $="TV"; </tag>
+        <one-of>
+          <item> TV </item>
+          <item> Fernseher </item>
+        </one-of>
+      </item>
+      
+      <item>
+        Ton
+        <tag> $="TON"; </tag>
+      </item>
+      
+      <item>
+        Radio
+        <tag> $="RADIO"</tag>
+      </item>
+    
+    </one-of>
+  </rule>
+
+  <!-- Commands -->
+  <rule id="Command" scope="private">
+    <one-of>
+      <item>
+        lauter
+        <tag> $="LAUTER"; </tag>
+      </item>
+      
+      <item>
+        leiser
+        <tag> $="LEISER"; </tag>
+      </item>
+      
+      <item>
+        <tag> $="AN"; </tag>
+        <one-of>
+          <item> an </item>
+          <item> ein </item>
+          <item> anschalten </item>
+          <item> anmachen </item>
+          <item> einschalten </item>
+        </one-of>
+      </item>
+      
+      <item>
+        <tag> $="AUS"; </tag>
+        <one-of>
+          <item> aus </item>
+          <item> ausschalten </item>
+          <item> ausmachen </item>
+        </one-of>
+      </item>
+    
+    </one-of>
+  </rule>
+
+  <!-- Locations -->
+  <rule id="Location" scope="private">
+    <one-of>
+      
+      <item>
+        <tag> $="BAD"; </tag>
+        <one-of>
+          <item> Bad </item>
+          <item> Badezimmer </item>
+        </one-of>
+      </item>
+      
+      <item>
+        <tag> $="WOHNZIMMER"; </tag>
+        <one-of>
+          <item> Wohnzimmer </item>
+          <item> Wohnraum </item>
+        </one-of>
+      </item>
+      
+      <item>
+        Flur
+        <tag> $="FLUR"; </tag>
+      </item>
+      
+      <item>
+        Büro
+        <tag> $="BÜRO"; </tag>
+      </item>
+    
+    </one-of>
+  </rule>
+
+</grammar>

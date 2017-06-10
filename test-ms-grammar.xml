@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<grammar xml:lang="en-US" root="flightBooker"
+tag-format="semantics-ms/1.0" version="1.0"
+xmlns="http://www.w3.org/2001/06/grammar">
+
+  <rule id="flightBooker" scope="public">
+    <item> I want to fly from </item>
+    <ruleref uri="#flightCities" />
+    <tag> $.LeavingFrom=$$; </tag>
+    <item> to </item>
+    <ruleref uri="#flightCities" />
+    <tag> $.GoingTo=$$; </tag>
+  </rule>
+
+  <rule id="flightCities" scope="private">
+    <one-of>
+      <item>
+        <tag> $="SEA"; </tag>
+        <one-of>
+          <item> Seattle-Tacoma </item>
+          <item> Sea-Tac </item>
+          <item> Seattle </item>
+        </one-of>
+      </item>
+      <item>
+        Boston <tag> $="BOS"; </tag>
+      </item>
+      <item>
+        Miami <tag> $="MIA"; </tag>
+      </item>
+      <item>
+        <tag> $="DFW"; </tag>
+        <one-of>
+          <item> Dallas </item>
+          <item> Fort Worth </item>
+          <item> Dallas-Fort Worth </item>
+        </one-of>
+      </item>
+    </one-of>
+  </rule>
+
+</grammar>

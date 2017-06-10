@@ -1,0 +1,67 @@
+<grammar 
+  version="1.0"
+  xml:lang="de-DE"
+  root="Main"
+  xmlns="http://www.w3.org/2001/06/grammar"
+  tag-format="semantics/1.0">
+  		 
+	<!-- Main-Rule -->		 
+	<rule id="Main" scope="public">
+		<one-of>
+			<item>Susi</item>
+			<item>Beenden</item>
+			<item>Licht <ruleref uri="#Switch"/></item>
+			<item>Lampe <ruleref uri="#Switch"/></item>
+      <item>Ton <tag> out="TV"; </tag><ruleref uri="#Switch"/></item>
+      <item>TV <tag> out="TV"; </tag><ruleref uri="#Switch"/></item>
+      <item>Fernseher <tag> out="TV"; </tag><ruleref uri="#Switch"/></item>
+      <item>TV <tag> out="TV"; </tag><ruleref uri="#Volume"/></item>
+      <item>Fernseher <tag> out="TV"; </tag><ruleref uri="#Volume"/></item>
+    </one-of>
+	</rule>
+
+  <!-- Switches -->
+  <rule id="Switch" scope="public">
+    <one-of>
+      <item> lauter </item>
+      <item> leiser </item>
+      <item>
+        <tag> out.todo="AN"; </tag>
+        <one-of>
+          <item> an </item>
+          <item> ein </item>
+          <item> anschalten </item>
+          <item> anmachen </item>
+          <item> einschalten </item>
+        </one-of>
+      </item>
+      <item>
+        <tag> out.todo="AUS"; </tag>
+        <one-of>
+          <item> aus </item>
+          <item> ausschalten </item>
+          <item> ausmachen </item>
+        </one-of>
+      </item>
+    </one-of>
+  </rule>
+
+  <!-- Lautstärke -->
+  <rule id="Volume" scope="public">
+    <one-of>
+      <item>
+        <tag> out.todo="LAUTER"; </tag>
+        <one-of>
+          <item> lauter </item>
+        </one-of>
+      </item>
+      <item>
+        <tag> out.todo="LEISER"; </tag>
+        <one-of>
+          <item> leiser </item>
+        </one-of>
+      </item>
+    </one-of>
+  </rule>
+
+</grammar>

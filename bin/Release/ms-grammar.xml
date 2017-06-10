@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<grammar xml:lang="de-DE" root="Main"
+tag-format="semantics-ms/1.0" version="1.0"
+xmlns="http://www.w3.org/2001/06/grammar">
+
+  <rule id="Main" scope="public">
+    <one-of>
+      <item>Susi<tag> $.Object="SUSI"; </tag></item>
+      <item>Beenden<tag> $.Object="EXIT"; </tag></item>
+      <item>
+        <ruleref uri="#Object" />
+        <tag> $.Object=$$; </tag>
+        <ruleref uri="#Switch" />
+        <tag> $.Switch=$$; </tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <!-- Objects -->
+  <rule id="Object" scope="private">
+    <one-of>
+      <item>
+        <tag> $="LICHT"; </tag>
+        <one-of>
+          <item> Licht </item>
+          <item> Lampe </item>
+        </one-of>
+      </item>
+      <item>
+        <tag> $="TV"; </tag>
+        <one-of>
+          <item> TV </item>
+          <item> Fernseher </item>
+        </one-of>
+      </item>
+      <item>Ton<tag> $="TON"; </tag></item>
+      <item>Radio<tag> $="RADIO"</tag></item>
+    </one-of>
+  </rule>
+
+  <!-- Switches -->
+  <rule id="Switch" scope="private">
+    <one-of>
+      <item> lauter <tag> $="LAUTER"; </tag></item>
+      <item> leiser <tag> $="LEISER"; </tag></item>
+      <item>
+        <tag> $="AN"; </tag>
+        <one-of>
+          <item> an </item>
+          <item> ein </item>
+          <item> anschalten </item>
+          <item> anmachen </item>
+          <item> einschalten </item>
+        </one-of>
+      </item>
+      <item>
+        <tag> $="AUS"; </tag>
+        <one-of>
+          <item> aus </item>
+          <item> ausschalten </item>
+          <item> ausmachen </item>
+        </one-of>
+      </item>
+    </one-of>
+  </rule>
+
+
+</grammar>

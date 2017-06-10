@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "opsSpeechRecog", "opsSpeechRecog.vbproj", "{BEE5EB19-13AC-4D02-A702-B65F5B44A9A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEE5EB19-13AC-4D02-A702-B65F5B44A9A9}.Debug|x86.ActiveCfg = Debug|x86
+		{BEE5EB19-13AC-4D02-A702-B65F5B44A9A9}.Debug|x86.Build.0 = Debug|x86
+		{BEE5EB19-13AC-4D02-A702-B65F5B44A9A9}.Release|x86.ActiveCfg = Release|x86
+		{BEE5EB19-13AC-4D02-A702-B65F5B44A9A9}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

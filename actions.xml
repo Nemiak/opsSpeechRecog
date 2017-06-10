@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VoiceActions>
+
+  <!-- generelle Einstellungen zum Programm -->
+  <Settings>
+    <MySettings>
+      <!-- akustisches Feedback: 0 = stumm / 1 = Beeps / 2 = Sprachausgabe -->
+      <AcousticFeedback>1</AcousticFeedback>
+      <!-- gewählte Stimme für Sprachausgabe -->
+      <TTS_Voice>Microsoft Hedda Desktop</TTS_Voice>
+      <!-- Wie lange soll nach Aktivierungs-Wort auf ein Kommando gewartet werden? [Sekunden] -->
+      <WaitForVoiceCommand>7</WaitForVoiceCommand>
+      <!-- SSH-Daten für Raspi -->
+      <Name_or_IP_of_RaspberryPi>RemotePi</Name_or_IP_of_RaspberryPi>
+      <Raspi_LoginName>pi</Raspi_LoginName>
+      <Raspi_LoginPassword>raspberry</Raspi_LoginPassword>
+    </MySettings>
+  </Settings>
+  
+   <!--hier die Befehle eintragen, die bei dem Kommando ausgeführt werden sollen
+       Beispiel:
+        <Action>
+          <Voice>LICHT AN</Voice>
+          <Connect>SSH</Connect>
+          <Command>pilight-send -p elro_800_switch -s 31 -u 1 -t</Command>
+        </Action>
+        => mit dem Sprachkommando "Licht an" (groß/klein spielt keine Rolle)
+           wird über SSH-Verbindung der Befehl "pilight-send..." an den Raspi geschickt-->  
+  <Actions>
+    <Action>
+      <Voice>LICHT AN</Voice>
+      <Connect>SSH</Connect>
+      <Command>pilight-send -p elro_800_switch -s 31 -u 1 -t</Command>
+    </Action>
+    <Action>
+      <Voice>LICHT AUS</Voice>
+      <Connect>SSH</Connect>
+      <Command>pilight-send -p elro_800_switch -s 31 -u 1 -f</Command>
+    </Action>
+    <Action>
+      <Voice>RADIO AN</Voice>
+      <Connect>SSH</Connect>
+      <Command>irsend send_once onkyo key_power</Command>
+    </Action>
+    <Action>
+      <Voice>RADIO AUS</Voice>
+      <Connect>SSH</Connect>
+      <Command>irsend send_once onkyo key_power</Command>
+    </Action>
+    <Action>
+      <Voice>RADIO LEISER</Voice>
+      <Connect>SSH</Connect>
+      <Command>irsend send_once onkyo key_volumedown</Command>
+    </Action>
+    <Action>
+      <Voice>RADIO LAUTER</Voice>
+      <Connect>SSH</Connect>
+      <Command>irsend send_once onkyo key_volumeup</Command>
+    </Action>
+    <Action>
+      <Voice>TV AN</Voice>
+      <Connect>SSH</Connect>
+      <Command>irsend send_once mr303 key_power; irsend send_once GrundigTV key_power</Command>
+    </Action>
+    <!-- Demo für 3-Wort-Kommando und "WEB"-Nutzung-->
+    <Action>
+      <Voice>Licht Büro an</Voice>
+      <Connect>WEB</Connect>
+      <Command>http://raspi/LichtAn.php</Command>
+    </Action>
+  </Actions>
+
+</VoiceActions>
